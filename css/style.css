@@ -1,0 +1,147 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100%;
+}
+body .main {
+  background-image: url("/assets/img/starfall-gif-51.gif");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  background-color: rgba(24, 22, 22, 0.961);
+  color: #ddd;
+  height: 10vh;
+  position: sticky;
+  top: 0px;
+  text-align: center;
+}
+.header > h1 {
+  font-size: 42.5px;
+  font-family: "Work Sans", sans-serif;
+  padding-top: 8px;
+}
+
+.section {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  max-width: 1120px;
+  height: 597px;
+  margin: 0px 32px;
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  /* border: 3px solid #000; */
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px 5px rgba(196, 190, 190, 0.11);
+  backdrop-filter: blur(16px);
+}
+
+.container-img {
+  width: 39%;
+  height: 368px;
+}
+
+/* Parte de las letras botones */
+.container-button {
+  width: 61%;
+  height: 368px;
+  /* background-color: blueviolet; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+}
+
+.container-button .palabra_adivinar {
+  align-self: center;
+  background-color: transparent;
+  color: #ffd;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  width: 80%;
+  text-align: center;
+  height: 113.14px;
+}
+
+.palabra_adivinar span {
+  display: inline-block;
+  margin: 0px auto;
+  font-family: "Work Sans", sans-serif;
+  font-size: 66px;
+  margin: 8px auto;
+}
+
+.button-start {
+  width: 208px;
+  height: 64px;
+  align-self: center;
+  font-family: "Work Sans", sans-serif;
+  border-radius: 5px;
+  font-size: 31.2px;
+  font-weight: bolder;
+  background-color: rgb(19, 17, 17);
+  color: #dddd;
+  transition: 0.5 transform ease-in-out;
+  box-shadow: 1px 2px 3px 3px #ddd;
+}
+.button-start-active:active {
+  background-color: rgba(24, 22, 22, 0.961);
+  transform: scale(1.21);
+  color: #fff;
+  box-shadow: 2px 2px 5px 1px rgba(214, 219, 224, 0.148);
+  box-shadow: 1px 2px 3px 3px #ddd;
+}
+.button-start-active:disabled {
+  box-shadow: 2px 2px 5px 1px rgb(41, 125, 221);
+  color: rgb(75, 149, 233);
+}
+
+.container-letras {
+  width: 100%;
+  height: 189px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px 16px;
+  padding: 12px;
+}
+
+.container-letras .letra {
+  font-size: 24px;
+  font-family: "Work Sans", sans-serif;
+  width: 48px;
+  height: 48px;
+  background-color: transparent;
+  color: white;
+  border: 0.5px solid #ffd;
+  transition: 1s background-color linear;
+}
+.container-letras .letra-hover:hover {
+  color: black;
+  background-color: rgb(203, 193, 193);
+}
+
+.container-letras .letra:disabled {
+  color: cornflowerblue;
+  border: 1px solid cornflowerblue;
+}
