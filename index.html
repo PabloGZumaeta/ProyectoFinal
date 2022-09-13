@@ -21,20 +21,15 @@
       <section class="section">
         <div class="container">
           <div class="container-img">
-            <img src="" alt="Hangman" />
+            <img src="./assets/img/Ahorcado0.svg" alt="Hangman" />
           </div>
           <div class="container-button">
-            <div class="palabra_adivinar">
-              <span>a</span>
-              <span>a</span>
-              <span>a</span>
-              <span>_</span>
-              <span>_</span>
-              <span>_</span>
-              <span>a</span>
-              <span>a</span>
-            </div>
-            <button type="button" class="button-start button-start-active">
+            <div class="palabra_adivinar"></div>
+            <button
+              type="button"
+              class="button-start button-start-active"
+              id="jugar-btn"
+            >
               JUGAR
             </button>
           </div>
@@ -67,9 +62,38 @@
             <button type="button" class="letra letra-hover">y</button>
             <button type="button" class="letra letra-hover">z</button>
           </div>
+          <!-- Aquí pondre el modal  -->
+          <div class="modal modal-screen">
+            <div class="modal-img">
+              <img src="./assets/img/AmanecerAgradecido.jpg" alt="Ganaste" />
+            </div>
+            <div class="text-result">
+              <div class="text">
+                <span>Ganaste</span>
+              </div>
+              <div class="link">
+                <!-- <span>asasa</span> -->
+                <a
+                  href="https://www.gob.pe/qu/20715-como-prevenir-el-suicidio"
+                  target="_blank"
+                  >Más información Aquí
+                </a>
+              </div>
+            </div>
+            <div class="button-restart">
+              <button
+                type="button"
+                id="re-start"
+                class="re-start-hover re-start"
+              >
+                Reiniciar juego
+              </button>
+            </div>
+          </div>
         </div>
       </section>
     </div>
+
     <script src="./js/index.js"></script>
   </body>
 </html>
