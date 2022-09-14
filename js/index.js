@@ -14,8 +14,27 @@ let cantAciertos = 0;
 let ahorcado = obtenerClass(".container-img img");
 const btnJugar = obtenerId("jugar-btn");
 const btnLetras = document.querySelectorAll(".container-letras button");
+let colorValid = (t) => {
+  t.style.borderColor = "rgb(115, 255, 0)";
+  t.style.color = "rgb(115, 255, 0)";
+};
+let colorInvalid = (t) => {
+  t.style.borderColor = "rgb(255, 0, 43)";
+  t.style.color = "rgb(255, 0, 43)";
+};
 
-console.log(btnJugar);
+let resetColor = (t) => {
+  if (t.disabled === true) {
+    t.style.borderColor = "cornflowerblue";
+    t.style.color = "cornflowerblue";
+  }
+  if (t.disabled === false) {
+    t.style.borderColor = "white";
+    t.style.color = "#ffd";
+  }
+};
+
+// console.log(btnJugar);
 // reiniciar();
 disabled();
 function obtenerId(id) {
@@ -25,11 +44,11 @@ function obtenerClass(clas) {
   return document.querySelector(clas);
 }
 
+// Aqui se esta añadiendo el evento del click en jugar
 btnJugar.addEventListener("click", jugar);
 
+// Aqui generamos la funcionalidad  y dinamismo del evento
 function jugar(event) {
-  // ahorcado.src = "./assets/img/ahorcado0.svg";
-  // reiniciar();
   active();
   btnJugar.classList.remove("button-start-active");
   btnJugar.disabled = true;
@@ -37,47 +56,51 @@ function jugar(event) {
   palabraAdivinar.innerHTML = "";
   let palabraAzar = Math.floor(Math.random() * palabras.length);
   palabraOculta = palabras[palabraAzar];
-  // console.log(palabraOculta);
+  console.log(palabraOculta);
   for (recorrer of palabraOculta) {
     let span = document.createElement("span");
     palabraAdivinar.appendChild(span);
-    console.log(palabraOculta);
   }
 }
 
+// Recorremos nuestros botones de letras y ejecutamos la funcion " clickLetras"
 for (let i = 0; i < btnLetras.length; i++) {
   btnLetras[i].addEventListener("click", clickLetras);
 }
 
+// Función  ha ejecutar en nuestros botones
 function clickLetras(e) {
+  // Nos permite ver donde se esta ejecutando la tecla
   let tecla = e.target;
-  console.log(tecla);
+  // console.log(e.target);
   tecla.disabled = true;
   tecla.classList.remove("letra-hover");
+  // Asumimos que empieza perdiendo
   let resultado = false;
 
+  // Seleccionamos los spans generados por jugar
   const spans = document.querySelectorAll(".palabra_adivinar span");
 
+  // Creamos 2 variables y las pasamos a minusculas para comparar el contenido
   let contenido = tecla.innerHTML.toLowerCase();
   let letraComparar = palabraOculta.toLowerCase();
+  // Empieza el recorrido de comparación
   for (let i = 0; i < letraComparar.length; i++) {
     if (contenido === letraComparar[i]) {
       resultado = true;
-      console.log(
-        `La letra "${contenido}" se encuentra en ${letraComparar} eso la hace ${resultado}`
-      );
       spans[i].innerHTML = contenido;
       cantAciertos++;
+      colorValid(tecla);
     }
   }
 
   if (resultado === false) {
+    colorInvalid(tecla);
     cantErrores++;
     let source = `./assets/img/ahorcado${cantErrores}.svg`;
     ahorcado.src = source;
     if (cantErrores === 4) {
       perdiste();
-      console.log(cantErrores);
     }
   }
   if (cantAciertos === palabraOculta.length) {
@@ -109,19 +132,19 @@ function ganaste() {
   reiniciar();
 }
 function disabled() {
-  const btnLetras = document.querySelectorAll(".container-letras button");
   for (let i = 0; i < btnLetras.length; i++) {
     btnLetras[i].disabled = true;
     btnLetras[i].classList.remove("letra-hover");
+    resetColor(btnLetras[i]);
   }
   btnJugar.disabled = false;
 }
 
 function active() {
-  const btnLetras = document.querySelectorAll(".container-letras button");
   for (let i = 0; i < btnLetras.length; i++) {
     btnLetras[i].disabled = false;
     btnLetras[i].classList.add("letra-hover");
+    resetColor(btnLetras[i]);
   }
 }
 
@@ -136,5 +159,6 @@ function reiniciar() {
     cantErrores = 0;
     disabled();
     ahorcado.src = "./assets/img/ahorcado0.svg";
+    btnJugar.classList.add("button-start-active");
   });
 }
